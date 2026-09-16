@@ -1,10 +1,40 @@
-/* =========================================================
-   CONECTA SERVIÇOS — FRONT-END (protótipo estático)
-   Dados mockados em memória / localStorage (sem backend real)
-========================================================= */
-
 const CITIES = ["Camaquã", "Sentinela do Sul", "Tapes", "Sertão Santana"];
 
+let providers = JSON.parse(localStorage.getItem('cs_providers')) || [
+  { id: 1, nome: "João Pereira", profissao: "Eletricista", cidade: "Tapes", preco: 90, contato: "(51) 90000-0001",
+    descricao: "Instalações elétricas residenciais e comerciais, com mais de 10 anos de experiência.",
+    foto: "", rating: 4.8, avaliacoes: 24, requisicoes: 58 },
+  { id: 2, nome: "Marcia Souza", profissao: "Professora Particular", cidade: "Camaquã", preco: 60, contato: "(51) 90000-0002",
+    descricao: "Aulas de reforço em matemática e física para ensino fundamental e médio.",
+    foto: "", rating: 4.9, avaliacoes: 31, requisicoes: 72 },
+  { id: 3, nome: "Carlos Mendes", profissao: "Encanador", cidade: "Sertão Santana", preco: 75, contato: "(51) 90000-0003",
+    descricao: "Reparos hidráulicos, desentupimentos e instalação de encanamentos.",
+    foto: "", rating: 4.5, avaliacoes: 18, requisicoes: 40 },
+  { id: 4, nome: "Ana Rodrigues", profissao: "Manicure", cidade: "Sentinela do Sul", preco: 35, contato: "(51) 90000-0004",
+    descricao: "Atendimento a domicílio, unhas em gel e esmaltação em gel.",
+    foto: "", rating: 4.7, avaliacoes: 45, requisicoes: 90 },
+  { id: 5, nome: "Pedro Almeida", profissao: "Mecânico", cidade: "Camaquã", preco: 120, contato: "(51) 90000-0005",
+    descricao: "Manutenção geral, troca de óleo e revisão de veículos leves.",
+    foto: "", rating: 4.6, avaliacoes: 22, requisicoes: 50 },
+  { id: 6, nome: "Fernanda Lima", profissao: "Dentista", cidade: "Tapes", preco: 150, contato: "(51) 90000-0006",
+    descricao: "Consultas, limpeza e tratamentos odontológicos gerais.",
+    foto: "", rating: 5.0, avaliacoes: 12, requisicoes: 25 },
+];
+
+let historico = JSON.parse(localStorage.getItem('cs_historico')) || [
+  { id: 1, providerId: 1, providerNome: "João Pereira", servico: "Eletricista", data: "02/07/2026", status: "concluido", avaliado: false },
+  { id: 2, providerId: 4, providerNome: "Ana Rodrigues", servico: "Manicure", data: "20/07/2026", status: "avaliado", avaliado: true },
+  { id: 3, providerId: 3, providerNome: "Carlos Mendes", servico: "Encanador", data: "10/08/2026", status: "andamento", avaliado: false },
+];
+
+let currentUser = JSON.parse(localStorage.getItem('cs_currentUser')) || null;
+let reviewTargetHistoryId = null;
+let selectedStars = 0;
+
+function saveState() {
+  localStorage.setItem('cs_providers', JSON.stringify(providers));
+  localStorage.setItem('cs_historico', JSON.stringify(historico));
+}
 
 /* ---------- NAVEGAÇÃO ---------- */
 function navigate(pageId) {

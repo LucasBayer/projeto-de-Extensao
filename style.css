@@ -1,9 +1,3 @@
-/* =========================================================
-   PALETA — REGRA 60/30/10
-   60% dominante : Pale Sky / Pale Slate  (fundos, cards)
-   30% secundária: Charcoal Blue          (header, footer, títulos, botões primários)
-   10% destaque  : Onyx / Thistle         (texto forte, preço, estrelas, hover)
-========================================================= */
 :root{
   --charcoal-blue: #364652;
   --onyx: #071108;
